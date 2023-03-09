@@ -35,28 +35,23 @@ const Invoices = () => {
             headerName: 'Cost',
             flex: 1,
             renderCell: (params) => (
-                <Typography>
-
+                <Typography color={colors.greenAccent[500]}>
+                    ${params.row.cost}
                 </Typography>
             )
 
 
         },
         {
-            field: 'city',
-            headerName: 'City',
-            flex: 1
-        },
-        {
-            field: 'zipCode',
-            headerName: 'ZipCode',
+            field: 'date',
+            headerName: 'Date',
             flex: 1
         },
     ]
 
     return (
         <Box m='20px'>
-            <Header title='CONTACTS' subtitle='List of Contacts for Future Reference' />
+            <Header title='INVOICES' subtitle='List of Invoice Balances' />
             <Box
                 m='40px 0 0 0'
                 height='75vh'
@@ -73,17 +68,17 @@ const Invoices = () => {
                         backgroundColor: colors.blueAccent[700],
                         borderTop: 'none'
                     },
-                    '& .MuiDataGrid-toolbarContainer .MuiButton-text': {
-                        color: `${colors.grey[100]} !important`
+                    '& .MuiCheckbox-root': {
+                        color: `${colors.greenAccent[200]} !important`
                     }
 
 
                 }}
             >
                 <DataGrid
-                    rows={mockDataContacts}
+                    checkboxSelection
+                    rows={mockDataInvoices}
                     columns={columns}
-                    components={{ Toolbar: GridToolbar }}
                 />
             </Box>
         </Box>
