@@ -1,5 +1,5 @@
 import { Box, Typography, useTheme } from '@mui/material';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridCellClassFn, GridCellParams, GridColDef } from '@mui/x-data-grid';
 import { tokens } from '../../theme';
 import { mockDataTeam } from '../../data/mockData';
 import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined'
@@ -11,7 +11,7 @@ const Team = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
-    const columns = [
+    const columns: GridColDef[] = [
         {
             field: 'id',
             headerName: 'ID'
@@ -43,20 +43,21 @@ const Team = () => {
             field: 'access',
             headerName: 'Access Level',
             flex: 1,
-            renderCell: ({ row: { access } }) => {
+            renderCell: ({ row: { access } }: GridCellParams) => {
                 return (
                     <Box
+                        display='flex'
                         width='60%'
                         m='0 auto'
                         p='5px'
-                        display='flex'
                         justifyContent='center'
-                        backgroundColor={
-                            access === 'admin' ?
-                                colors.greenAccent[600] :
-                                colors.greenAccent[700]
-                        }
                         borderRadius='4px'
+                        sx={{
+                            backgroundColor:
+                                access === 'admin' ?
+                                    colors.greenAccent[600] :
+                                    colors.greenAccent[700]
+                        }}
                     >
                         {access === 'admin' && <AdminPanelSettingsOutlinedIcon />}
                         {access === 'manager' && <SecurityOutlinedIcon />}
@@ -67,6 +68,7 @@ const Team = () => {
                             {access}
                         </Typography>
                     </Box>
+
                 )
             }
         },
@@ -74,7 +76,7 @@ const Team = () => {
 
     return (
         <Box m='20px'>
-            <Header title='TEAM' subtitle='Managing the Theam Members' />
+            <Header title='TEAM' subtitle='Managing the Team Members' />
             <Box
                 m='40px 0 0 0'
                 height='75vh'

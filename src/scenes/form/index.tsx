@@ -3,7 +3,15 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Header from '../../components/Header';
-import matchers from '@testing-library/jest-dom/matchers';
+
+interface UserType {
+    firstName: string,
+    lastName: string,
+    email: string,
+    contact: string,
+    address1: string,
+    address2: string,
+}
 
 const initialValues = {
     firstName: '',
@@ -31,7 +39,7 @@ const userSchema = yup.object().shape({
 const Form = () => {
 
     const isNonMobile = useMediaQuery('(min-width: 600px)');
-    const handleFormSubmit = (values) => {
+    const handleFormSubmit = (values: UserType) => {
         console.log(values);
     }
     return (
@@ -65,7 +73,7 @@ const Form = () => {
                                 value={values.firstName}
                                 name='firstName'
                                 error={!!touched.firstName && !!errors.firstName}
-                                helperText={touched.firstName && errors.firstName}
+                                helperText={touched.firstName && typeof errors.firstName}
                                 sx={{ gridColumn: 'span 2' }}
                             />
                             <TextField
@@ -78,7 +86,7 @@ const Form = () => {
                                 value={values.lastName}
                                 name='lastName'
                                 error={!!touched.lastName && !!errors.lastName}
-                                helperText={touched.lastName && errors.lastName}
+                                helperText={touched.lastName && typeof errors.lastName}
                                 sx={{ gridColumn: 'span 2' }}
                             />
                             <TextField
@@ -91,7 +99,7 @@ const Form = () => {
                                 value={values.email}
                                 name='email'
                                 error={!!touched.email && !!errors.email}
-                                helperText={touched.email && errors.email}
+                                helperText={touched.email && typeof errors.email}
                                 sx={{ gridColumn: 'span 4' }}
                             />
                             <TextField
@@ -104,7 +112,7 @@ const Form = () => {
                                 value={values.contact}
                                 name='contact'
                                 error={!!touched.contact && !!errors.contact}
-                                helperText={touched.contact && errors.contact}
+                                helperText={touched.contact && typeof errors.contact}
                                 sx={{ gridColumn: 'span 4' }}
                             />
                             <TextField
@@ -117,7 +125,7 @@ const Form = () => {
                                 value={values.address1}
                                 name='address1'
                                 error={!!touched.address1 && !!errors.address1}
-                                helperText={touched.address1 && errors.address1}
+                                helperText={touched.address1 && typeof errors.address1}
                                 sx={{ gridColumn: 'span 4' }}
                             />
                             <TextField
@@ -130,7 +138,7 @@ const Form = () => {
                                 value={values.address2}
                                 name='address2'
                                 error={!!touched.address2 && !!errors.address2}
-                                helperText={touched.address2 && errors.address2}
+                                helperText={touched.address2 && typeof errors.address2}
                                 sx={{ gridColumn: 'span 4' }}
                             />
                         </Box>

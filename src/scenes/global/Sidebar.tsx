@@ -1,5 +1,7 @@
+import * as React from 'react';
 import { useState } from 'react';
 import { ProSidebar, Menu, MenuItem } from 'react-pro-sidebar';
+import 'react-pro-sidebar/dist/css/styles.css';
 import { Box, IconButton, Typography, useTheme } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { tokens } from '../../theme';
@@ -16,9 +18,18 @@ import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import 'react-pro-sidebar/dist/css/styles.css';
+import User from '../../public/img/user.png';
 
 
-const Item = ({ title, to, icon, selected, setSelected }) => {
+interface ItemProps {
+    title: string,
+    to: string,
+    icon: React.ReactElement,
+    selected: string,
+    setSelected: (selected: string) => void
+}
+
+const Item = ({ title, to, icon, selected, setSelected }: ItemProps) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
@@ -35,7 +46,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
     )
 }
 
-const Sidebar = () => {
+const Sidebar: React.FC = () => {
 
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
@@ -98,7 +109,7 @@ const Sidebar = () => {
                                 <img alt='profile-user'
                                     width='100px'
                                     height='100px'
-                                    src={`../../assets/user.png`}
+                                    src={User}
                                     style={{ cursor: 'pointer', borderRadius: '50%', objectFit: 'cover' }}
                                 />
                             </Box>

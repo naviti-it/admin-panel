@@ -1,5 +1,5 @@
 import { Box, useTheme } from '@mui/material';
-import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import { DataGrid, GridToolbar, GridColDef } from '@mui/x-data-grid';
 import { tokens } from '../../theme';
 import { mockDataContacts } from '../../data/mockData';
 import Header from '../../components/Header';
@@ -8,7 +8,7 @@ const Contacts = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
-    const columns = [
+    const columns: GridColDef[] = [
         {
             field: 'id',
             headerName: 'ID',

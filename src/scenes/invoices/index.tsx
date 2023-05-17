@@ -1,5 +1,5 @@
 import { Box, useTheme, Typography } from '@mui/material';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridCellParams } from '@mui/x-data-grid';
 import { tokens } from '../../theme';
 import { mockDataInvoices } from '../../data/mockData';
 import Header from '../../components/Header';
@@ -34,7 +34,7 @@ const Invoices = () => {
             field: 'cost',
             headerName: 'Cost',
             flex: 1,
-            renderCell: (params) => (
+            renderCell: (params: GridCellParams) => (
                 <Typography color={colors.greenAccent[500]}>
                     ${params.row.cost}
                 </Typography>

@@ -1,7 +1,13 @@
+import * as React from 'react';
 import { Typography, Box, useTheme } from "@mui/material";
 import { tokens } from "../theme";
 
-const Header = ({ title, subtitle }) => {
+interface HeaderPeops {
+    title: string,
+    subtitle: string
+}
+
+const Header: React.FC<HeaderPeops> = ({ title, subtitle }) => {
 
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
