@@ -40,7 +40,6 @@ const Form = () => {
 
     const isNonMobile = useMediaQuery('(min-width: 600px)');
     const handleFormSubmit = (values: UserType) => {
-        console.log(values);
     }
     return (
         <Box m='20px'>
